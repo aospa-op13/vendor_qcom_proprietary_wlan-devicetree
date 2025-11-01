@@ -1,6 +1,23 @@
+ifeq ($(CONFIG_ARCH_X1P42100),y)
+dtbo-y += x1p42100-kiwi-cnss.dtbo
+endif
+
 ifeq ($(CONFIG_ARCH_CANOE),y)
 dtbo-y += canoe-kiwi-cnss.dtbo
 dtbo-y += canoe-peach-cnss.dtbo
+dtbo-y += canoep-hdk-peach-cnss.dtbo
+endif
+
+ifeq ($(CONFIG_ARCH_ALOR),y)
+dtbo-y += alor-cdp-wcn7750.dtbo
+dtbo-y += alor-mtp-wcn7750.dtbo
+dtbo-y += alor-qrd-wcn7750.dtbo
+dtbo-y += alor-rcm-wcn7750.dtbo
+dtbo-y += alor-atp-peach.dtbo
+dtbo-y += alor-cdp-peach.dtbo
+dtbo-y += alor-mtp-peach.dtbo
+dtbo-y += alor-qrd-peach.dtbo
+dtbo-y += alor-rcm-peach.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_SUN),y)
@@ -33,6 +50,7 @@ ifeq ($(CONFIG_ARCH_RAVELIN),y)
 dtbo-y += ravelin-idp-adrastea.dtbo
 dtbo-y += ravelin-qrd-adrastea.dtbo
 dtbo-y += ravelin-atp-adrastea.dtbo
+dtbo-y += ravelin-qca6490-cnss.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_PARROT),y)
@@ -75,10 +93,17 @@ endif
 
 ifeq ($(CONFIG_ARCH_SERAPH),y)
 dtbo-y += seraph-peach-cnss.dtbo
+dtbo-y += seraph-advance-peach-cnss.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_QTI_VM),y)
 dtbo-y += sa8797p-gunyah-vm-cnss.dtbo
+dtbo-y += monaco-vm-cnss.dtbo
+endif
+
+ifeq ($(CONFIG_ARCH_YUPIK),y)
+dtbo-y += lahaina-qca6490-cnss.dtbo
+dtbo-y += lahaina-qca6750-cnss.dtbo
 endif
 
 always-y	:= $(dtb-y) $(dtbo-y)
