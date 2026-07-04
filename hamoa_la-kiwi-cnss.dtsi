@@ -4,7 +4,7 @@
  * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  */
 
-#include <dt-bindings/interconnect/qcom,hamoa_la-rpmh.h>
+#include <dt-bindings/interconnect/qcom,x1e80100-rpmh.h>
 
 &tlmm {
 	cnss_pins {
@@ -51,8 +51,6 @@
 &soc {
 	wlan_kiwi: qcom,cnss-kiwi@b0000000 {
 		compatible = "qcom,cnss-kiwi";
-		reg = <0xb0000000 0x10000>;
-		reg-names = "smmu_iova_ipa";
 		qcom,wlan-cbc-enabled;
 		supported-ids = <0x1107>;
 		wlan-en-gpio = <&tlmm 117 0>;
@@ -79,17 +77,9 @@
 	cnss_pci0: cnss_pci0 {
 		reg = <0 0 0 0 0>;
 		memory-region =
-			<&cnss_wlan_mem &cnss_pci0_iommu_region_partition>;
+			<&cnss_wlan_mem>;
 
 		#address-cells = <1>;
 		#size-cells = <1>;
-		wlan-smmuv3;
-
-		cnss_pci0_iommu_region_partition:
-		cnss_pci0_iommu_region_partition {
-			iommu-addresses =
-				<&cnss_pci0 0x0 0x0 0x0 0x0 0x98000000>,
-				<&cnss_pci0 0x0 0x0 0xB0000000 0xf 0x50000000>;
-		};
 	};
 };
