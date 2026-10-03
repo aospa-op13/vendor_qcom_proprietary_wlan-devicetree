@@ -7,8 +7,17 @@ ifeq ($(CONFIG_ARCH_SUN),y)
 dtbo-y += sun-kiwi-cnss.dtbo
 dtbo-y += sun-kiwi-cnss-v8.dtbo
 dtbo-y += sun-peach-cnss.dtbo
+ifeq ($(OPLUS_WIFI_ONLY),true)
+dtbo-y += oplus/erhai_sun-peach-cnss-v8-overlay.dtbo
+else
 dtbo-y += sun-peach-cnss-v8.dtbo
+endif
 dtbo-y += sunp-hdk-peach-cnss-v8.dtbo
+# ifdef OPLUS_FEATURE_WIFI_BDF
+dtbo-y += oplus/hummer_sun-peach-cnss-v8-overlay.dtbo
+dtbo-y += oplus/pagani_sun-peach-cnss-v8-overlay.dtbo
+dtbo-y += oplus/ktm_sun-kiwi-cnss-v8-overlay.dtbo
+# endif /* OPLUS_FEATURE_WIFI_BDF */
 endif
 
 ifeq ($(CONFIG_ARCH_PINEAPPLE),y)
@@ -51,6 +60,9 @@ dtbo-y += tuna-qrd-wcn7750.dtbo
 dtbo-y += tuna-mtp-kiwi.dtbo
 dtbo-y += tuna-rcm-kiwi.dtbo
 dtbo-y += tuna-atp-kiwi.dtbo
+# ifdef OPLUS_FEATURE_WIFI_BDF
+dtbo-y += oplus/vw_tuna-mtp-wcn7750-overlay.dtbo
+# endif /* OPLUS_FEATURE_WIFI_BDF */
 endif
 
 ifeq ($(CONFIG_ARCH_KERA),y)
